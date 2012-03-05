@@ -7,23 +7,23 @@ import petrinet.logic.Transition;
 
 public class Zaehler {
 
-    
+
     /**
-     * ZŠhlt einmal von 0 bis 7.
-     * 
-     * jeweilige (ZŠhler-) Stelle wird markiert
-     * 
+     * Zaehlt einmal von 0 bis 7.
+     *
+     * jeweilige (Zaehler-) Stelle wird markiert
+     *
      * @param args
      */
-    
+
     public static void main(String[] args) {
-        
-        Petrinet pn = new Petrinet("ZŠhler");
-        
+
+        Petrinet pn = new Petrinet("Zaehler");
+
         Place vorgaenger = null;
-        
+
         Transition t0 = null;
-        
+
         for (int i = 0; i < 8 ; i++) {
             Transition t = pn.transition("Transition #" + i);
             if (null != vorgaenger) {
@@ -32,7 +32,7 @@ public class Zaehler {
             if (0 == i) {
                 t0 = t;
             }
-            
+
             Place p = pn.place("Place #" + i);
             p.setMaxTokens(1);
             Arc a = pn.arc("Arc", t, p);
@@ -40,7 +40,7 @@ public class Zaehler {
 
             vorgaenger = p;
         }
-        
+
         PetrinetGUI.displayPetrinet(pn);
     }
 }

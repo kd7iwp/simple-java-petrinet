@@ -14,19 +14,19 @@ import petrinet.logic.Petrinet;
 import petrinet.logic.Place;
 import petrinet.logic.Transition;
 
-public class PetrinetGUI 
+public class PetrinetGUI
 extends JFrame {
 
     public class PlaceLabel
     extends JLabel {
-        
+
         private Place place;
 
         public PlaceLabel(Place p) {
             super(p.toString());
             this.place = p;
         }
-        
+
         @Override
         public String getText() {
             if (place == null) {
@@ -34,7 +34,7 @@ extends JFrame {
             }
             return place.toString();
         }
-        
+
     }
 
 
@@ -45,7 +45,7 @@ extends JFrame {
         public TransitionButton(final Transition t) {
             super(t.getName());
             this.transition = t;
-            
+
             this.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
@@ -55,28 +55,28 @@ extends JFrame {
                         fireStateChanged();
                     }
                 }});
-            
+
         }
-        
+
         public boolean isEnabled() {
             if (transition == null) {
                  return false;
             }
             return transition.canFire();
         }
-        
+
         public String getText() {
             if (null==transition) {
                 return null;
             }
             return transition.toString();
         }
-        
+
     }
 
 
     Petrinet pn;
-    
+
     public PetrinetGUI(Petrinet pn) {
         super(pn.getName());
         this.pn = pn;
@@ -95,11 +95,11 @@ extends JFrame {
             add(new PlaceLabel(p));
         }
     }
-    
-    
-    
+
+
+
     public static void displayPetrinet(final Petrinet pn) {
-        
+
         Runnable guiCreator = new Runnable() {
             public void run() {
                 JFrame fenster = new PetrinetGUI(pn);
@@ -107,14 +107,14 @@ extends JFrame {
                 // Swing anweisen, das Programm zu beenden, wenn das Fenster
                 // geschlossen wird
                 fenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
+
                 // Zeigt das Fenster an
                 fenster.setSize(500, 500);
                 fenster.setVisible(true);
             }
         };
- 
-        // FŸhre den obigen Quellcode im Event-Dispatch-Thread aus
+
+        // Fahre den obigen Quellcode im Event-Dispatch-Thread aus
         SwingUtilities.invokeLater(guiCreator);
     }
 }
