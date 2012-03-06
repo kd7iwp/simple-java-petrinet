@@ -100,10 +100,32 @@ extends PetrinetObject {
         return sb.toString();
     }
 
+	// Searches through all of the Places in this Petrinet and finds one with the matching name
+	// Returns a new place if none can be found
+	public Place getPlace(String name) {
+		for (Place p : places) {
+			if (p.getName() == name) {
+				return p;
+			}
+		}
+		return this.place(name);
+	}
+	
     public List<Place> getPlaces() {
         return places;
     }
 
+	// Searches through all of the Transitions in this Petrinet and finds one with the matching name
+	// Returns a new Transition if none can be found
+	public Transition getTransition(String name) {
+		for (Transition t : transitions) {
+			if (t.getName() == name) {
+				return t;
+			}
+		}
+		return this.transition(name);
+	}
+	
     public List<Transition> getTransitions() {
         return transitions;
     }
