@@ -83,4 +83,14 @@ extends PetrinetObject {
     public int getWeight() {
         return weight;
     }
+
+	public Place getPlace()
+	{
+		return place;
+	}
+	
+	public Transition getTransition()
+	{
+		return transition;
+	}
 }

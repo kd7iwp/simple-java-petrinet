@@ -130,6 +130,17 @@ extends PetrinetObject {
         return transitions;
     }
 
+	// Searches through all of the Arcs in this Petrinet and finds one with the matching name
+	// Returns null if none can be found
+	public Arc getArc(String name) {
+		for (Arc a : arcs) {
+			if (a.getName() == name) {
+				return a;
+			}
+		}
+		return null;
+	}
+
     public List<Arc> getArcs() {
         return arcs;
     }
