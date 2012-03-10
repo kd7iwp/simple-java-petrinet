@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Ein Petrinetz kennt alle Elemente.
  * 
- * Deshalb sollten nach Mšglichkeit auch besser diese Factory-Methoden 
+ * Deshalb sollten nach Maeglichkeit auch besser diese Factory-Methoden 
  * zum Erstellen von Objekten benutzt werden, anstatt die Konstruktoren 
  * direkt aufzurufen.
  * 
@@ -104,7 +104,7 @@ extends PetrinetObject {
 	// Returns a new place if none can be found
 	public Place getPlace(String name) {
 		for (Place p : places) {
-			if (p.getName() == name) {
+			if (p.getName().equalsIgnoreCase(name)) {
 				return p;
 			}
 		}
@@ -119,7 +119,7 @@ extends PetrinetObject {
 	// Returns a new Transition if none can be found
 	public Transition getTransition(String name) {
 		for (Transition t : transitions) {
-			if (t.getName() == name) {
+			if (t.getName().equalsIgnoreCase(name)) {
 				return t;
 			}
 		}
@@ -134,7 +134,7 @@ extends PetrinetObject {
 	// Returns null if none can be found
 	public Arc getArc(String name) {
 		for (Arc a : arcs) {
-			if (a.getName() == name) {
+			if (a.getName().equalsIgnoreCase(name)) {
 				return a;
 			}
 		}
