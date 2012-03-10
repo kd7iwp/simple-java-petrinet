@@ -105,7 +105,7 @@ extends PetrinetObject {
 	public Place getPlace(String name) {
 		for (Place p : places) {
 			if (p.getName().equalsIgnoreCase(name)) {
-				return p;
+            	return p;
 			}
 		}
 		return this.place(name);
